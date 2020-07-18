@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body div {
+            position: relative;
+            width: 37.5rem;
+            height: 50rem;
+            margin: 0 auto;
+            background-image: url(./0.jpg);
+        }
+        
+        body div span {
+            position: absolute;
+            display: none;
+            background-color: rgb(30, 30, 30);
+            width: 100%;
+            height: 18.75rem;
+            left: 0;
+            top: 21.5rem;
+        }
+        
+        .timedown {
+            width: 37.5rem;
+            color: red;
+            font-size: 2.25rem;
+            line-height: 15.625rem;
+            text-align: center;
+        }
+        
+        img {
+            display: none;
+        }
+    </style>
+    <title>每天剩余时间倒计时</title>
+</head>
+
+<body>
+    <div><span></span></div>
+    <img src="./0.jpg" alt="">
+    <img src="./1.jpg" alt="">
+    <img src="./2.jpg" alt="">
+    <img src="./3.jpg" alt="">
+    <img src="./4.jpg" alt="">
+    <img src="./5.jpg" alt="">
+    <img src="./6.jpg" alt="">
+    <img src="./7.jpg" alt="">
+    <img src="./8.jpg" alt="">
+    <script>
+        var temp = document.querySelector('div');
+        temp.i = 0;
+
+        setInterval(() => {
+            var sp = document.querySelector('span');
+            var now = new Date();
+            var timeNumber = 24 * 60 * 60 - (60 * 60 * now.getHours() + 60 * now.getMinutes() + now.getSeconds());
+            sp.innerHTML = `<h1 class = 'timedown' > 今天还剩${timeNumber}秒</h1>`;
+            var time = document.querySelector('div');
+            var sp = document.querySelector('span');
+            if (time.i == 8) {
+                time.i = 1;
+            } else {
+                time.i++;
+                sp.style.display = 'block';
+            }
+            time.style.backgroundImage = 'url(./' + time.i + '.jpg)';
+        }, 1000);
+    </script>
+</body>
+
+</html>
